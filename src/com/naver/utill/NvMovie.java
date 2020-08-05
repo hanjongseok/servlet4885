@@ -26,7 +26,9 @@ public class NvMovie {
 //		#old_content > table > tbody > tr:nth-child(11) > td.title > div > a
 		
 		//위 링크에 각각 접속해서 이미지 주소 가져오기
-		
+//		#content > div.article > div.mv_info_area > div.poster > a
+		//위 선택자를 doc.select() 에 넣어서 이미지 주소 가져오기 (menu.absUrl("src"))
+		//
 
 		// 반복문 적용하기
 		for (Element menu : menus) {
