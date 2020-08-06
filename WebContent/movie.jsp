@@ -63,28 +63,28 @@
 <body>
 	<div class="container">
 		<h3>영화 랭킹 출력</h3>
-	</div>
-	<script>
-		$(document).ready(function() {
+<div id="result"></div>
 
-			var search = $("#search").val();
-			$("#result").html("여기에 출력" + search);
-			console.log(search);
-			$.get("movie_ok.nhn", 
-			 function(data, status) {
-				var html = "";
-// 				console.log(data['total']);
-// 				console.log(data.items);
-// 				$.each(data.items, function(key, field) {
-// 					html += "<a href='" + field.link + "' target='_blank'>"
-// 					html += field.title + "</a><br>";
-// 					//			             $("div").append(field + " ");
-// 					//			     		console.log("Data: " + field.title);  // field['title']
-// 				});
-// 				$("#result").html(html);
-			});
-		});
-	</script>
+</div> 
+<script>
+$(document).ready(function(){
+	var search = $("#search").val();
+	$("#result").html("여기에 출력: " + search);
+	console.log(search);
+    $.get("movie_ok.nhn",
+    function(data, status){
+    	var html = "";
+    	console.log(data);
+//     	console.log(data.items);
+    	$.each(data, function(key, field){
+    		html += "<a href='" + field.link + "' target='_blank'>"
+    		html += "<img src='" + field.img + "'></a><br>";
+    		html += field.title + "<br>";
+          });
+		$("#result").html(html);
+    });
+});
+</script>
 
 </body>
 </html>
