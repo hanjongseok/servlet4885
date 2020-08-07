@@ -29,61 +29,42 @@ public class NvMovie {
 
 
 		// CSS 선택자를 사용해 링크 추출하기
-		for (int i = 2; i < 12; i++) {
-//		Elements menus = doc.select("#scrollbar ul li a");
-			Elements menus = doc.select("#old_content > table > tbody > tr:nth-child("+i+") > td.title > div > a");
-//			Elements img = doc.select("img");
+//		for (int i = 2; i < 12; i++) {
 
-			// 위 링크에 각각 접속해서 이미지 주소 가져오기
-//		#content > div.article > div.mv_info_area > div.poster > a
-			// 위 선택자를 doc.select() 에 넣어서 이미지 주소 가져오기 (menu.absUrl("src"))
-			//
-//
-//		Document doc1 = Jsoup.connect("url주소").get();
-//        String folder = doc1.title();
-//        Element element = doc1.select("#flick0 > li.item2 > div.obj_off.tab4 > a > img").get(0);
-//        Elements img = element.select("img");
-//        int page = 0;
-//        for (Element e : img) {
-//            String url1 = e.getElementsByAttribute("src").attr("src");
-//            
-//            URL imgUrl = new URL(url1);
-//            BufferedImage jpg = ImageIO.read(imgUrl);
-//            File file = new File("경로"+folder+"\\"+page+".jpg");
-//            ImageIO.write(jpg, "jpg", file);
-//            page+=1;
-
-//		// 반복문 적용하기
+//			Elements menus = doc.select("#old_content > table > tbody > tr:nth-child("+i+") > td.title > div > a");
+			Elements menus = doc.select("div.tit3 a");
+			// 반복문 적용하기
 			for (Element menu : menus) {
-//
-//			// 링크의 "title" 속성 값 추출하기
+				// 링크의 "title" 속성 값 추출하기
 				String title = menu.attr("title").trim();
-//
-//			// 링크의 URL 추출하기 (절대경로)
+				// 링크의 URL 추출하기 (절대경로)
 				String nextUrl = menu.absUrl("href");
-
-//			// log
-				System.out.println(String.format("%s\n\t%s", title, nextUrl));
-
+				// log
+//				System.out.println(String.format("%s\n\t%s", title, nextUrl));
 				// 링크 대상 페이지에 접근하기
 				Document nextDoc = Jsoup.connect(nextUrl).get();
-
 				// 상세 내용 추출하기
-				String content = nextDoc.select("#content > div.article > div.mv_info_area > div.poster > a > img").attr("src");
-				System.out.println(content);
-		
-				
-				MovieDTO dto = new  MovieDTO();
-				
-				dto.setTitle(title);
-				dto.setLink(nextUrl);
+				String content = nextDoc.select("div.poster > a > img").attr("src");
+//				System.out.println(content);
+				// 감독
+				// #content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(4) > p > a
+				String gam = nextDoc.select("#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(4) > p > a").text();
+//				System.out.println(gam);
+				// 배우
+				// #content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(6) > p > a:nth-child(1)
+				String bae = nextDoc.select("#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(6) > p > a:nth-child(1)").text();
+//				System.out.println(bae);
+				// 크롤링 해온 데이터들을 Dto에 담는다.
+				MovieDTO dto = new MovieDTO();
+				dto.setJe(title);
+				dto.setGam(gam);
+				dto.setBae(bae);
 				dto.setImg(content);
-				
+				// Dto 담은 데이터를 list 에 담는다
 				list.add(dto);
-				
 			}
-		}
-		return list;
+			return list;
+				
 	}
 
 }

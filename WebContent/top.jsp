@@ -6,7 +6,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
 <title>종석 사이트</title>
 <meta charset="utf-8">
@@ -51,6 +51,8 @@
 			<li class="nav-item"><a class="nav-link" href="food.nhn">맛집검색</a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="movie.nhn">영화정보</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="hugi.nhn">영화후기</a>
 			</li>
 			<%
 				}
