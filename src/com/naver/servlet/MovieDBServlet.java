@@ -27,6 +27,8 @@ public class MovieDBServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
 		ArrayList<MovieDTO> list = NvMovie.movie();
 		MovieDAO dao = new MovieDAOImpl();
 		for (MovieDTO t : list) {

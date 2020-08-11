@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.naver.dto.MovieDTO;
-import com.naver.utill.ApiExamSearchBlog;
-import com.naver.utill.NvMovie;
+import com.naver.dao.HugiDAO;
+import com.naver.dao.HugiDAOImpl;
+import com.naver.dto.*;
 
 @WebServlet("/HugiServlet")
 public class HugiServlet extends HttpServlet {
@@ -27,27 +26,31 @@ public class HugiServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		HugiDTO dto = new HugiDTO();
+			
+		String mb_num = request.getParameter("mb_num");
+		String mv_num = request.getParameter("mv_num");
+		String title = request.getParameter("h_tit");
+		String hugi = request.getParameter("hugi");
+//		float score = request.getParameter("score");
+		System.out.println(mb_num);
+		System.out.println(mv_num);
+		System.out.println(title);
+		System.out.println(hugi);
 
-//		String search = request.getParameter("search");
+		
+////데이터 db에 넣기
+		dto.setMb_num(mb_num);
+		dto.setMv_num(mv_num);
+		dto.setTitle(title);
+		dto.setHugi(hugi);
+		
+		HugiDAO dao = new HugiDAOImpl();
+		
+		dao.insert(dto);
 
-//		 String jsonData = ApiExamSearchBlog.search(search);
-		//view 쪽에 정보를 출력
-//		 
-//		 response.setContentType("application/json; charset=UTF-8");
-//		 PrintWriter out = response.getWriter();		
-//		 out.println(jsonData);
-		
-		//view에 정보를 출력
-		ArrayList<MovieDTO> list = NvMovie.movie();
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(list);
-		 response.setContentType("application/json; charset=UTF-8");
-		 PrintWriter out = response.getWriter();		
-		 out.println(json);
-		
-		 
-		
+	
 			
 	}
 

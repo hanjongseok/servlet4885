@@ -1,5 +1,8 @@
 package com.naver.dao;
 
-public class HugiDAO {
+import com.naver.dto.HugiDTO;
+
+public interface HugiDAO {
+	public void insert(HugiDTO dto);
 
 }

@@ -2,23 +2,30 @@ package com.naver.dto;
 
 public class HugiDTO {
 	
-	private int num;
-	private String je;
+	private String num;
+	private String mb_num;
+	private String mv_num;
 	private String title;
-	private String content;
-	private float score;
-	private String name;
-	public int getNum() {
+	private String hugi;
+	
+	
+	public String getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
-	public String getJe() {
-		return je;
+	public String getMb_num() {
+		return mb_num;
 	}
-	public void setJe(String je) {
-		this.je = je;
+	public void setMb_num(String mb_num) {
+		this.mb_num = mb_num;
+	}
+	public String getMv_num() {
+		return mv_num;
+	}
+	public void setMv_num(String mv_num) {
+		this.mv_num = mv_num;
 	}
 	public String getTitle() {
 		return title;
@@ -26,23 +33,15 @@ public class HugiDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public float getScore() {
-		return score;
-	}
-	public void setScore(float score) {
-		this.score = score;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 
+	public String getHugi() {
+		return hugi;
+	}
+	public void setHugi(String hugi) {
+		this.hugi = hugi;
+	}
+	
+	
+	
+	
 }

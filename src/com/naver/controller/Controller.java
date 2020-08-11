@@ -72,11 +72,15 @@ public class Controller extends HttpServlet {
 		} else if (uri.equals("food_ok.nhn")) {
 			site = "FoodServlet";
 			
+			
 		} else if (uri.equals("movie.nhn")) {
 			site = "movie.jsp";
 			
 		} else if (uri.equals("movie_ok.nhn")) {
 			site = "MovieServlet";
+			
+		} else if (uri.equals("movie2.nhn")) {//2
+			site = "MovieServlet2";
 			
 		} else if (uri.equals("hugi.nhn")) {
 			site = "hugi.jsp";
@@ -84,11 +88,6 @@ public class Controller extends HttpServlet {
 		} else if (uri.equals("hugi_ok.nhn")) {
 			site = "HugiServlet";
 			
-		} else if (uri.equals("write.nhn")) {
-			site = "write.jsp";
-			
-		} else if (uri.equals("write_ok.nhn")) {
-			site = "WriteServlet";
 			
 
 		} else {
